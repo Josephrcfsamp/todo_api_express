@@ -7,6 +7,14 @@ const app = express();
 // 🇺🇸 Define server port
 const PORT = 3000;
 
+/** 
+ * Middleware for task routes
+ * All requests to /tasks will be redirected to the corresponding route file
+*/
+const tasksRoutes = require('./routes/tasks');
+app.use('/tasks', tasksRoutes);
+
+
 // 🇺🇸 Middleware to parse JSON request body
 app.use(express.json());
 

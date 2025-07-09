@@ -1,3 +1,7 @@
+/** Task API test route
+ * This route responds to GET requests with a simple message 
+ * indicating that the API is working properly. 
+*/
 const express = require('express');
 const router = express.Router();
 
