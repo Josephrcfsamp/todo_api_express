@@ -30,3 +30,19 @@ router.post('/', (req, res) => {
     });
   });
 });
+
+/**
+ * GET route to retrieve all tasks.
+ * This route reads the tasks.json file
+ * and returns the list of tasks in JSON format.
+ */
+router.get('/', (req, res) => {
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao ler as tarefas.' });
+    }
+
+    const tasks = JSON.parse(data);
+    res.json(tasks);
+  });
+});
