@@ -13,7 +13,7 @@ const {
 router.get('/', getAllTasks);
 
 // POST new task
-router.post('/', addTask);
+router.post('/', createTask);
 
 // PUT update task
 router.put('/:id', updateTask);
