@@ -52,7 +52,6 @@ const deleteTask = (req, res) => {
 };
 
 // Export all controller functions
-// Exportar todas as funções do controlador
 module.exports = {
   getAllTasks,
   createTask,
