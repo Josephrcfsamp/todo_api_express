@@ -79,3 +79,34 @@ router.put('/:id', (req, res) => {
     });
   });
 });
+
+/**
+ * DELETE route to remove a task.
+ * This route receives a task ID as URL parameter
+ * and removes the corresponding task from the tasks.json file.
+ * Useful for managing dynamic user input and maintaining up-to-date records.
+ */
+router.delete('/:id', (req, res) => {
+  const taskId = req.params.id;
+
+  fs.readFile(filePath, 'utf8', (err, data) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao ler tarefas.' });
+    }
+
+    let tasks = JSON.parse(data);
+    const newTasks = tasks.filter(task => task.id !== taskId);
+
+    if (tasks.length === newTasks.length) {
+      return res.status(404).json({ error: 'Tarefa não encontrada.' });
+    }
+
+    fs.writeFile(filePath, JSON.stringify(newTasks, null, 2), (err) => {
+      if (err) {
+        return res.status(500).json({ error: 'Erro ao excluir tarefa.' });
+      }
+
+      res.json({ message: 'Tarefa removida com sucesso!' });
+    });
+  });
+});
