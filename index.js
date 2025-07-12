@@ -11,7 +11,7 @@ const PORT = 3000;
  * Middleware for task routes
  * All requests to /tasks will be redirected to the corresponding route file
 */
-const tasksRoutes = require('./routes/tasks');
+const tasksRoutes = require('./src/routes/tasks');
 app.use('/tasks', tasksRoutes);
 
 
